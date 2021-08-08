@@ -1,0 +1,49 @@
+<app-navbar></app-navbar>
+<div class="container" id="container">
+  <div class="form-container sign-up-container">
+    <form #form="ngForm" autocomplete="off" (submit)="registro(form)">
+      <div class="row">
+        <div class="col-md-10">
+            <h1>Crea tu cuenta de alquilador</h1>
+            <span>Ingrese los datos para el registro</span>
+        </div>
+        <div class="col-md-5">
+            <input class="form-control" type="text" placeholder="Nombre"
+            #nombre="ngModel" name="nombre" [(ngModel)]="formModel.nombre" required/>
+            <input type="text" placeholder="Cedula" 
+            #cedula="ngModel" name="cedula" [(ngModel)]="formModel.cedula" required />
+            <input type="email" placeholder="Email" 
+            #email="ngModel" name="email" [(ngModel)]="formModel.email" required />
+            <input type="date" #fecha="ngModel" name="fecha" [(ngModel)]="formModel.fechaNacimiento" required />
+            <input type="text" placeholder="Imagen del vehiculo" 
+            #password="ngModel" name="imgVehiculo" [(ngModel)]="formModel.imgVehiculo" required />
+          </div>
+          
+          <div class="col-md-5">
+            <input type="text" placeholder="Apellidos" 
+            #apellido="ngModel" name="apellido" [(ngModel)]="formModel.apellido" required />
+            <input type="text" placeholder="Telefono" 
+            #telefono="ngModel" name="telefono" [(ngModel)]="formModel.telefono" required />
+            <input type="text" placeholder="Dirección" 
+            #direccion="ngModel" name="direccion" [(ngModel)]="formModel.direccion" required />
+            <input type="text" placeholder="Matricula de carro" 
+            #password="ngModel" name="matricula" [(ngModel)]="formModel.matricula" required />
+            <input type="password" placeholder="Password" 
+            #password="ngModel" name="password" [(ngModel)]="formModel.password" required />
+          </div>
+          <div class="col-md-10">
+            <button type="submit">Registrarse</button>
+          </div>
+      </div>
+    </form>
+  </div>
+  <div class="overlay-container">
+        <div class="overlay">
+            <div class="overlay-panel overlay-right">
+                <h1>Bienvenido Registrate!</h1>
+                <p>Para mantenerse conectado, inicie sesión con su información personal</p>
+                <button class="ghost">Ingresar</button>
+            </div>
+        </div>
+    </div>
+</div>

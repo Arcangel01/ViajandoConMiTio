@@ -1,0 +1,19 @@
+<nav>
+    <div class="logo">
+        <a href="#"><em>ViajandoConMiTío</em>.com</a>
+    </div>
+    <div class="link">
+            <a class="nav-link active" aria-current="page" type="button" (click)="irInicio()">Inicio</a>
+            <a class="nav-link" type="button" (click)="irLogin()">Ingresar</a>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Registrarse</a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" type="button" (click)="irRegistro(1)">Registrarse como usuario</a></li>
+                  <li><a class="dropdown-item" type="button" (click)="irRegistro(2)">Registrarse como chofer</a></li>
+                  <li><a class="dropdown-item" type="button" (click)="irRegistro(3)">Registrarse como alquilador</a></li>
+                </ul>
+            </li>
+    </div>
+
+
+</nav>
