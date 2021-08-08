@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { LoginService } from 'src/app/api/login.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -10,11 +11,11 @@ import Swal from 'sweetalert2';
 })
 export class LoginComponent implements OnInit {
   formModel = {
-    UserName: '',
-    Password: '',
+    email: '',
+    password: '',
   };
 
-  constructor(private route: Router) {}
+  constructor(private route: Router, private loginService: LoginService) {}
 
   ngOnInit(): void {}
 
@@ -55,10 +56,33 @@ export class LoginComponent implements OnInit {
   }
 
   login(form: NgForm) {
-    let email = form.value.UserName;
-    let password = form.value.Password;
+    let email = form.value.email;
+    let password = form.value.password;
     if (this.validarEmail(email) && this.validarCampos(email, password)) {
-      console.log(form.value);
+      this.loginService.logueo(form.value)
+      .subscribe((data: any) => {
+        console.log(data);
+        if (data.token) {
+          Swal.fire({
+            title: 'Inicio de sesión correctamente',
+            text: 'Ha ingresado exitosamente',
+            icon: 'success',
+            confirmButtonColor: 'green',
+          }).then(x => {
+            this.route.navigateByUrl('');
+          });
+        } else {
+          this.mensajeError('Se produjo un error', 'Se ha producido un error y no se pudo validar al usuario, verifique su información.');
+        }
+      },
+      err => {
+        console.log(err);
+        if(err.status === 400) {
+          this.mensajeError('Credenciales Incorrectas', 'Por favor verifique sus credenciales');
+        } else {
+          this.mensajeError('Se produjo un error', 'Se ha producido un error y no se pudo validar al usuario, verifique su información.');
+        }
+      });
     }
   }
 }

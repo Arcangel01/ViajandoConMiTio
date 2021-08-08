@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { RegistroServiceService } from '../../api/registro-service.service';
 
 @Component({
   selector: 'app-registro-alquilador',
@@ -10,19 +12,19 @@ import Swal from 'sweetalert2';
 export class RegistroAlquiladorComponent implements OnInit {
 
   formModel = {
-    nombre: '',
-    apellido: '',
-    cedula: '',
-    telefono: '',
+    name: '',
+    lastName: '',
+    document: '',
+    phone: '',
     email: '',
-    direccion: '',
-    fechaNacimiento: '',
-    matricula: '',
-    imgVehiculo: '',
-    password: '',
+    address: '',
+    birth: '',
+    // matricula: '',
+    // imgVehiculo: '',
+    password: ''
   };
 
-  constructor() { }
+  constructor(private registroService: RegistroServiceService, private route: Router) { }
 
   ngOnInit(): void {
   }
@@ -37,25 +39,25 @@ export class RegistroAlquiladorComponent implements OnInit {
   }
 
   validarCampos(form: NgForm) {
-    if (form.value.nombre.length <= 0) {
+    if (form.value.name.length <= 0) {
       this.mensajeError(
         'Campo Nombre vacio',
         'Por favor ingrese un valor en el campo nombre'
       );
       return false;
-    } else if (form.value.apellido.length <= 0) {
+    } else if (form.value.lastName.length <= 0) {
       this.mensajeError(
         'Campo Apellidos vacio',
         'Por favor ingrese un valor en el campo apellidos'
       );
       return false;
-    } else if (form.value.cedula.length <= 0) {
+    } else if (form.value.document.length <= 0) {
       this.mensajeError(
         'Campo Cedula vacio',
         'Por favor ingrese un valor en el campo cedula'
       );
       return false;
-    } else if (form.value.telefono.length <= 0) {
+    } else if (form.value.phone.length <= 0) {
       this.mensajeError(
         'Campo Telefono vacio',
         'Por favor ingrese un valor en el campo telefono'
@@ -67,30 +69,30 @@ export class RegistroAlquiladorComponent implements OnInit {
         'Por favor ingrese un valor en el campo email'
       );
       return false;
-    } else if (form.value.direccion.length <= 0) {
+    } else if (form.value.address.length <= 0) {
       this.mensajeError(
         'Campo dirección vacio',
         'Por favor ingrese un valor en el campo dirección'
       );
       return false;
-    } else if (form.value.fecha.length <= 0) {
+    } else if (form.value.birth.length <= 0) {
       this.mensajeError(
         'Campo Fecha de nacimiento vacio',
         'Por favor ingrese un valor en el campo fecha de nacimiento'
       );
       return false;
-    } else if (form.value.matricula.length <= 0) {
-      this.mensajeError(
-        'Campo matricula del carro',
-        'Por favor ingrese un valor en el campo matricula del carro'
-      );
-      return false;
-    } else if (form.value.imgVehiculo.length <= 0) {
-      this.mensajeError(
-        'Campo imagen del carro vacio',
-        'Por favor ingrese un valor en el campo imagen del carro'
-      );
-      return false;
+    // } else if (form.value.matricula.length <= 0) {
+    //   this.mensajeError(
+    //     'Campo matricula del carro',
+    //     'Por favor ingrese un valor en el campo matricula del carro'
+    //   );
+    //   return false;
+    // } else if (form.value.imgVehiculo.length <= 0) {
+    //   this.mensajeError(
+    //     'Campo imagen del carro vacio',
+    //     'Por favor ingrese un valor en el campo imagen del carro'
+    //   );
+    //   return false;
     } else if (form.value.password.length <= 0) {
       this.mensajeError(
         'Campo Password vacio',
@@ -114,9 +116,31 @@ export class RegistroAlquiladorComponent implements OnInit {
   }
 
   registro(form: NgForm) {
+    const data = { ...form.value, privileges_id: [
+      3
+    ]}
     let email = form.value.email;
     if (this.validarEmail(email) && this.validarCampos(form)) {
-      console.log(form.value);
+      this.registroService.registrarUsuario(data)
+      .subscribe(data => {
+        console.log(data);
+        if (data.message == "user created") {
+          Swal.fire({
+            title: 'Registro completo',
+            text: 'Ha sido registrado exitosamente',
+            icon: 'success',
+            confirmButtonColor: 'green',
+          }).then(x => {
+            this.route.navigateByUrl('');
+          });
+        } else {
+          this.mensajeError('Se produjo un error', 'Se ha producido un error y no se pudo registrar al usuario, verifique su información.');
+        }
+      },
+      err => {
+        this.mensajeError('Se produjo un error', 'Se ha producido un error y no se pudo registrar al usuario, verifique su información.');
+        console.log(err);
+      });
     }
   }
 

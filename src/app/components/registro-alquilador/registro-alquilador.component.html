@@ -9,25 +9,25 @@
         </div>
         <div class="col-md-5">
             <input class="form-control" type="text" placeholder="Nombre"
-            #nombre="ngModel" name="nombre" [(ngModel)]="formModel.nombre" required/>
+            #nombre="ngModel" name="name" [(ngModel)]="formModel.name" required/>
             <input type="text" placeholder="Cedula" 
-            #cedula="ngModel" name="cedula" [(ngModel)]="formModel.cedula" required />
+            #cedula="ngModel" name="document" [(ngModel)]="formModel.document" required />
             <input type="email" placeholder="Email" 
             #email="ngModel" name="email" [(ngModel)]="formModel.email" required />
-            <input type="date" #fecha="ngModel" name="fecha" [(ngModel)]="formModel.fechaNacimiento" required />
-            <input type="text" placeholder="Imagen del vehiculo" 
-            #password="ngModel" name="imgVehiculo" [(ngModel)]="formModel.imgVehiculo" required />
+            <input type="date" #fecha="ngModel" name="birth" [(ngModel)]="formModel.birth" required />
+            <!-- <input type="text" placeholder="Imagen del vehiculo" 
+            #imgVehiculo="ngModel" name="imgVehiculo" [(ngModel)]="formModel.imgVehiculo" required /> -->
           </div>
           
           <div class="col-md-5">
             <input type="text" placeholder="Apellidos" 
-            #apellido="ngModel" name="apellido" [(ngModel)]="formModel.apellido" required />
+            #apellido="ngModel" name="lastName" [(ngModel)]="formModel.lastName" required />
             <input type="text" placeholder="Telefono" 
-            #telefono="ngModel" name="telefono" [(ngModel)]="formModel.telefono" required />
+            #telefono="ngModel" name="phone" [(ngModel)]="formModel.phone" required />
             <input type="text" placeholder="Dirección" 
-            #direccion="ngModel" name="direccion" [(ngModel)]="formModel.direccion" required />
-            <input type="text" placeholder="Matricula de carro" 
-            #password="ngModel" name="matricula" [(ngModel)]="formModel.matricula" required />
+            #direccion="ngModel" name="address" [(ngModel)]="formModel.address" required />
+            <!-- <input type="text" placeholder="Matricula de carro" 
+            #matricula="ngModel" name="matricula" [(ngModel)]="formModel.matricula" required /> -->
             <input type="password" placeholder="Password" 
             #password="ngModel" name="password" [(ngModel)]="formModel.password" required />
           </div>

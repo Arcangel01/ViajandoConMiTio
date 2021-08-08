@@ -9,27 +9,27 @@
         </div>
         <div class="col-md-5">
             <input class="form-control" type="text" placeholder="Nombre"
-            #nombre="ngModel" name="nombre" [(ngModel)]="formModel.nombre" required/>
+            #nombre="ngModel" name="name" [(ngModel)]="formModel.name" required/>
             <input type="text" placeholder="Cedula" 
-            #cedula="ngModel" name="cedula" [(ngModel)]="formModel.cedula" required />
+            #cedula="ngModel" name="document" [(ngModel)]="formModel.document" required />
             <input type="email" placeholder="Email" 
             #email="ngModel" name="email" [(ngModel)]="formModel.email" required />
-            <input type="date" #fecha="ngModel" name="fecha" [(ngModel)]="formModel.fechaNacimiento" required />
-            <input type="password" placeholder="Password" 
-            #password="ngModel" name="password" [(ngModel)]="formModel.password" required />
+            <input type="date" #fecha="ngModel" name="birth" [(ngModel)]="formModel.birth" required />
           </div>
           
           <div class="col-md-5">
             <input type="text" placeholder="Apellidos" 
-            #apellido="ngModel" name="apellido" [(ngModel)]="formModel.apellido" required />
+            #apellido="ngModel" name="lastName" [(ngModel)]="formModel.lastName" required />
             <input type="text" placeholder="Telefono" 
-            #telefono="ngModel" name="telefono" [(ngModel)]="formModel.telefono" required />
-            <input type="text" placeholder="Tipo de sangre" 
-            #direccion="ngModel" name="tipoSangre" [(ngModel)]="formModel.tipoSangre" required />
-            <input type="text" placeholder="Tipo de licencia" 
-            #password="ngModel" name="licencia" [(ngModel)]="formModel.licencia" required />
+            #telefono="ngModel" name="phone" [(ngModel)]="formModel.phone" required />
+            <input type="text" placeholder="Dirección" 
+            #direccion="ngModel" name="address" [(ngModel)]="formModel.address" required />
+            <input type="password" placeholder="Password" 
+            #password="ngModel" name="password" [(ngModel)]="formModel.password" required />
+            <!-- <input type="text" placeholder="Tipo de licencia" 
+            #licencia="ngModel" name="licencia" [(ngModel)]="formModel.licencia" required />
             <input type="file" placeholder="Record policial" 
-            #password="ngModel" name="policial" [(ngModel)]="formModel.policial" required />
+            #policial="ngModel" name="policial" [(ngModel)]="formModel.policial" required /> -->
           </div>
           <div class="col-md-10">
             <button type="submit">Registrarse</button>

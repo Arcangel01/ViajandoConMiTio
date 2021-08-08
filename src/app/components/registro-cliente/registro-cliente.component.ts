@@ -8,6 +8,7 @@ import { RegistroServiceService } from '../../api/registro-service.service';
   selector: 'app-registro-cliente',
   templateUrl: './registro-cliente.component.html',
   styleUrls: ['./registro-cliente.component.css'],
+  providers: [RegistroServiceService]
 })
 export class RegistroClienteComponent implements OnInit {
   formModel = {
@@ -18,7 +19,7 @@ export class RegistroClienteComponent implements OnInit {
     email: '',
     address: '',
     birth: '',
-    password: '',
+    password: ''
   };
 
   constructor(private route: Router, private registroService: RegistroServiceService) {}
@@ -104,14 +105,30 @@ export class RegistroClienteComponent implements OnInit {
   }
 
   registro(form: NgForm) {
+    const data = { ...form.value, privileges_id: [
+      1
+    ]}
     let email = form.value.email;
     if (this.validarEmail(email) && this.validarCampos(form)) {
-      console.log(form.value);
-      this.registroService.registrarUsuario(form.value)
+      this.registroService.registrarUsuario(data)
       .subscribe(data => {
         console.log(data);
+        if (data.message == "user created") {
+          Swal.fire({
+            title: 'Registro completo',
+            text: 'Ha sido registrado exitosamente',
+            icon: 'success',
+            confirmButtonColor: 'green',
+          }).then(x => {
+            this.route.navigateByUrl('');
+          });
+
+        } else {
+          this.mensajeError('Se produjo un error', 'Se ha producido un error y no se pudo registrar al usuario, verifique su información.');
+        }
       },
       err => {
+        this.mensajeError('Se produjo un error', 'Se ha producido un error y no se pudo registrar al usuario, verifique su información.');
         console.log(err);
       });
     }
