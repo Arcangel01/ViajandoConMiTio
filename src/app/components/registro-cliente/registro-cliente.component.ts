@@ -120,7 +120,7 @@ export class RegistroClienteComponent implements OnInit {
             icon: 'success',
             confirmButtonColor: 'green',
           }).then(x => {
-            this.route.navigateByUrl('');
+            this.route.navigateByUrl('/homeCliente');
           });
 
         } else {

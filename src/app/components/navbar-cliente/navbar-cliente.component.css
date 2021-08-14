@@ -1,0 +1,71 @@
+
+/* Nav Bar */
+
+nav .logo {
+    float: left;
+    margin-left: 30px;
+  }
+  
+  nav .logo a {
+    font-size: 28px;
+    line-height: 80px;
+    text-transform: uppercase;
+    color: #fff;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+  }
+  
+  nav .logo em {
+    font-style: normal;
+    font-weight: 200;
+  }
+  
+  nav {
+    background: #FF416C;
+	background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
+	background: linear-gradient(to right, #FF4B2B, #FF416C);
+    height: 80px;
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: 300;
+    box-shadow: 0px 2px 10px 0px rgba(0,0,0,0.5);
+  }
+
+  nav .link {
+    float: right;
+    margin-right: 100px;
+    position: relative;
+    top: 22px;
+  }
+
+  nav .link a {
+    text-transform: uppercase;
+    color: #fff;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    display: inline-block;
+  }
+
+  .nav-item {
+    float: right;
+    display: block;
+  }
+
+  .dropdown-menu {
+    background: #FF416C;
+    background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
+    background: linear-gradient(to right, #FF4B2B, #FF416C);
+  }
+
+  .dropdown-item:hover {
+    background: #FF416C;
+  }
+
+label {
+  color: black;
+}
+h5 {
+  color: black;
+}

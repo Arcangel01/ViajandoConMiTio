@@ -12,6 +12,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegistroChoferComponent } from './components/registro-chofer/registro-chofer.component';
 import { RegistroAlquiladorComponent } from './components/registro-alquilador/registro-alquilador.component';
+import { HomeClienteComponent } from './pages/cliente-final/home-cliente/home-cliente.component';
+import { NavbarClienteComponent } from './components/navbar-cliente/navbar-cliente.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { RegistroAlquiladorComponent } from './components/registro-alquilador/re
     FooterComponent,
     NavbarComponent,
     RegistroChoferComponent,
-    RegistroAlquiladorComponent
+    RegistroAlquiladorComponent,
+    HomeClienteComponent,
+    NavbarClienteComponent
   ],
   imports: [
     BrowserModule,

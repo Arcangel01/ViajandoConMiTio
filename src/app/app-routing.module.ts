@@ -5,6 +5,7 @@ import { RegistroAlquiladorComponent } from './components/registro-alquilador/re
 import { RegistroChoferComponent } from './components/registro-chofer/registro-chofer.component';
 import { RegistroClienteComponent } from './components/registro-cliente/registro-cliente.component';
 import { HomeComponent } from './pages/home/home.component';
+import { HomeClienteComponent } from './pages/cliente-final/home-cliente/home-cliente.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path: 'registroAlquilador',
     component: RegistroAlquiladorComponent
+  },
+  {
+    path: 'homeCliente',
+    component: HomeClienteComponent
   },
   {
     path: '',

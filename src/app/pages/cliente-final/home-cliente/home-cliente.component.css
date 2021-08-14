@@ -1,0 +1,55 @@
+.jumbotron {
+    background-color: rebeccapurple;
+    color: whitesmoke;
+    margin-top: 50px;
+}
+
+.container {
+    position: relative;
+    top: 60px;
+}
+
+.card-hotel {
+    flex: 1 200px;
+    margin-top: 10px;
+}
+
+.btn-reserva {
+    width: 100%;
+    border-radius: 0px;
+}
+
+.footer-address-icon {
+    padding-right: 10px;
+}
+
+#carouselExampleDark {
+
+    width: 60%;
+    left: 20%;
+}
+
+.carousel-inner {
+    width: 100%;
+}
+
+button {
+	border-radius: 20px;
+	border: 1px solid #FF4B2B;
+	background-color: #FF4B2B;
+	color: #FFFFFF;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 12px 45px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+}
+
+#cardOne {
+    width: 350px;
+}
+
+.footer {
+    padding-top: 100px;
+}
