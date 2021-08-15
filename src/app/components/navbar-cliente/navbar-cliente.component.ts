@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import Swal from 'sweetalert2';
+import { SolicitudVehiculoService } from '../../api/cliente/solicitud-vehiculo.service';
 
 @Component({
   selector: 'app-navbar-cliente',
@@ -10,13 +11,13 @@ import Swal from 'sweetalert2';
 export class NavbarClienteComponent implements OnInit {
 
   formModel = {
-    origen: '',
-    destino: '',
-    tarifa: '',
-    comentarios: ''
+    origin: '',
+    destiny: '',
+    price: '',
+    comment: ''
   };
 
-  constructor() { }
+  constructor(private solicitudService: SolicitudVehiculoService) { }
 
   ngOnInit(): void {
   }
@@ -24,12 +25,22 @@ export class NavbarClienteComponent implements OnInit {
   solicitud(form: NgForm) {
     console.log(form.value);
     if (form.value) {
-      Swal.fire({
-        title: 'Solicitud enviada',
-        text: 'Ha registrado una solicitud',
-        icon: 'success',
-        confirmButtonColor: 'green',
-      })
+      this.solicitudService.request(form.value)
+      .subscribe((data: any) => {
+        if (data.message == "request created") {          
+          Swal.fire({
+            title: 'Solicitud enviada',
+            text: 'Ha registrado una solicitud',
+            icon: 'success',
+            confirmButtonColor: 'green',
+          }).then(x => {
+            form.reset();
+          })
+        }
+      },
+      err => {
+        console.log('ERROR');
+      });
     }
   }
 

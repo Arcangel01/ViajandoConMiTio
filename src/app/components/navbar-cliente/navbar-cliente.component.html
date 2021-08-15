@@ -21,23 +21,23 @@
             <form class="row g-3" #form="ngForm" (submit)="solicitud(form)">
                 <div class="col-md-6">
                   <label class="form-label">Origen</label>
-                  <input type="text" class="form-control" placeholder="Lugar de recogida" id="origen"
-                  #origen="ngModel" name="origen" [(ngModel)]="formModel.origen" required>
+                  <input type="text" class="form-control" placeholder="Lugar de recogida" id="origin"
+                  #origin ="ngModel" name="origin" [(ngModel)]="formModel.origin" required>
                 </div>
                 <div class="col-md-6">
                   <label class="form-label">Destino</label>
-                  <input type="text" class="form-control" placeholder="Destino" id="destino"
-                  #destino="ngModel" name="destino" [(ngModel)]="formModel.destino" required>
+                  <input type="text" class="form-control" placeholder="Destino" id="destiny"
+                  #destiny="ngModel" name="destiny" [(ngModel)]="formModel.destiny" required>
                 </div>
                 <div class="col-md-6">
                   <label class="form-label">Tarifa</label>
-                  <input type="number" class="form-control" placeholder="$ Ofrezca su tarifa" id="tarifa"
-                  #tarifa="ngModel" name="tarifa" [(ngModel)]="formModel.tarifa" min="5000" required>
+                  <input type="number" class="form-control" placeholder="$ Ofrezca su tarifa" id="price"
+                  #price="ngModel" name="price" [(ngModel)]="formModel.price" min="5000" required>
                 </div>
                 <div class="col-md-6">
                     <label class="form-label">Comentarios</label>
-                    <input type="text" class="form-control" placeholder="Comentarios y deseos" id="comentarios"
-                    #comentarios="ngModel" name="comentarios" [(ngModel)]="formModel.comentarios">
+                    <input type="text" class="form-control" placeholder="Comentarios y deseos" id="comment"
+                    #comment="ngModel" name="comment" [(ngModel)]="formModel.comment">
                   </div>
                 <div class="col-12">
                   <button class="btn btn-success" type="submit" [disabled]="form.invalid">Solicitar</button>

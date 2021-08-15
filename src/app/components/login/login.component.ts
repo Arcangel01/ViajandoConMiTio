@@ -63,13 +63,14 @@ export class LoginComponent implements OnInit {
       .subscribe((data: any) => {
         console.log(data);
         if (data.token) {
+          localStorage.setItem('token', data.token);
           Swal.fire({
             title: 'Inicio de sesión correctamente',
             text: 'Ha ingresado exitosamente',
             icon: 'success',
             confirmButtonColor: 'green',
           }).then(x => {
-            this.route.navigateByUrl('');
+            this.dirigir(1);
           });
         } else {
           this.mensajeError('Se produjo un error', 'Se ha producido un error y no se pudo validar al usuario, verifique su información.');
@@ -83,6 +84,20 @@ export class LoginComponent implements OnInit {
           this.mensajeError('Se produjo un error', 'Se ha producido un error y no se pudo validar al usuario, verifique su información.');
         }
       });
+    }
+  }
+
+  // Redireccionar
+  dirigir(rol: number) {
+    if (localStorage.getItem('token') != null) {
+      switch (rol) {
+        case 1:
+          this.route.navigateByUrl('/homeCliente');
+          break;
+      
+        default:
+          break;
+      }
     }
   }
 }
