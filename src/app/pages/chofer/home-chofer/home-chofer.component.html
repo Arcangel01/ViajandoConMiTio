@@ -79,7 +79,7 @@
   <hr>
   <h5>Solicitudes</h5>
   <div class="d-flex flex-wrap">
-    <ng-container *ngFor="let item of solicitudes">
+    <ng-container *ngFor="let item of solicitudes; index as i">
     <div class="card card-request d-flex flex-column justify-content-between ml-2" *ngIf="item.active">
         <div class="card-body">
             <img class="card-img-top" src="../../../../assets/img/perfil.png" height="180px" />
@@ -89,7 +89,7 @@
             <p class="card-text p-1">Comentarios: {{item.comment}} </p>
           </div>
           <div>
-            <a type="button" class="btn btn-success btn-reserva" data-bs-toggle="modal" href="#exampleModalToggle">
+            <a type="button" class="btn btn-success btn-reserva" data-bs-toggle="modal" href="#exampleModalToggle" (click)="verDetalle(i)">
               <span class="oi oi-plus footer-address-icon"></span>Aceptar
             </a>
             <a type="button" class="btn btn-danger btn-reserva mt-1" (click)="rechazar(item);">
@@ -97,43 +97,42 @@
             </a>
           </div>
     </div>
+    <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalToggleLabel">Detalle del usuario</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <form class="row g-3">
+                  <div class="col-md-6">
+                    <label class="form-label">Nombre</label>
+                    <input type="text" [(ngModel)]="solicitudes[index].user.name" name="name" readonly>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Apellidos</label>
+                    <input type="text" [(ngModel)]="solicitudes[index].user.lastName" name="lastName" readonly>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Telefono</label>
+                    <input type="text" [(ngModel)]="solicitudes[index].user.phone" name="phone" readonly>
+                  </div>
+                  <div class="col-md-6">
+                      <label class="form-label">Correo</label>
+                      <input type="text" [(ngModel)]="solicitudes[index].user.email" name="email" readonly>
+                    </div>
+                  <div class="col-12">
+                    <button class="btn btn-success" type="submit" (click)="confirmar()">Confirmar</button>
+                  </div>
+                </form>
+          </div>
+        </div>
+      </div>
+    </div>
     </ng-container>
   </div>
 </div>
 <div class="footer">
     <app-footer></app-footer>
 </div>
-
-<div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalToggleLabel">Detalle del usuario</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            <form class="row g-3" #form="ngForm">
-                <div class="col-md-6">
-                  <label class="form-label">Origen</label>
-                  <input type="text" class="form-control" readonly>
-                </div>
-                <div class="col-md-6">
-                  <label class="form-label">Destino</label>
-                  <input type="text" class="form-control" readonly>
-                </div>
-                <div class="col-md-6">
-                  <label class="form-label">Tarifa</label>
-                  <input type="number" class="form-control" readonly>
-                </div>
-                <div class="col-md-6">
-                    <label class="form-label">Comentarios</label>
-                    <input type="text" class="form-control" readonly>
-                  </div>
-                <div class="col-12">
-                  <button class="btn btn-success" type="submit">Confirmar</button>
-                </div>
-              </form>
-        </div>
-      </div>
-    </div>
-  </div>

@@ -17,7 +17,6 @@ export class HomeChoferComponent implements OnInit {
   constructor(private solicitudesService: SolicitudesService, private router: Router) { }
 
   ngOnInit(): void {
-    console.log(localStorage.getItem('token'));
     if (localStorage.getItem('token') == null) {
       this.router.navigate(['/']);
     }
@@ -27,8 +26,7 @@ export class HomeChoferComponent implements OnInit {
   verSolicitud() {
     this.solicitudesService.verSolicitudes()
     .subscribe((data:any) => {
-      console.log(data);
-      this.solicitudes = data.data;
+      this.solicitudes = data;
     },
     err => {
       console.log(err);
@@ -43,6 +41,23 @@ export class HomeChoferComponent implements OnInit {
       confirmButtonColor: 'red',
     }).then(x => {
       item.active = false;
+    });
+  }
+
+  index = 0;
+  verDetalle(i:number) {
+    console.log(i);
+    this.index = i;
+  }
+
+  confirmar() {
+    Swal.fire({
+      title: 'Solicitud confirmada',
+      text: 'Solicitud aceptada correctamente',
+      icon: 'success',
+      confirmButtonColor: 'green',
+    }).then(x => {
+      
     });
   }
 

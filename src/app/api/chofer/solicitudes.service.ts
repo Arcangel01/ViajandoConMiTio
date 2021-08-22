@@ -9,9 +9,15 @@ export class SolicitudesService {
 
   constructor(private http: HttpClient) { }
 
+  tokenHeader = new HttpHeaders({'Authorization': 'Bearer ' + localStorage.getItem('token')});
+
     // Ver solicitudes
     verSolicitudes() {
-      const tokenHeader = new HttpHeaders({'Authorization': 'Bearer ' + localStorage.getItem('token')});
-      return this.http.get(environment.path + 'request/active', {headers : tokenHeader});
+      return this.http.get(environment.path + 'request/active', {headers : this.tokenHeader});
+    }
+
+    // Ver detalle cliente
+    verDetalleCliente() {
+      return this.http.get(environment.path + 'user/me', {headers : this.tokenHeader});
     }
 }

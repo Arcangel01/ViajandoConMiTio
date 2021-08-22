@@ -62,9 +62,8 @@ export class LoginComponent implements OnInit {
     if (this.validarEmail(email) && this.validarCampos(email, password)) {
       this.loginService.logueo(form.value)
       .subscribe((data: any) => {
-        console.log(data);
         if (data.token) {
-          this.getDecodedAccessToken(data.token);
+          let rol = this.getDecodedAccessToken(data.token);
           localStorage.setItem('token', data.token);
           Swal.fire({
             title: 'Inicio de sesión correctamente',
@@ -72,7 +71,7 @@ export class LoginComponent implements OnInit {
             icon: 'success',
             confirmButtonColor: 'green',
           }).then(x => {
-            this.dirigir(1);
+            this.dirigir(rol);
           });
         } else {
           this.mensajeError('Se produjo un error', 'Se ha producido un error y no se pudo validar al usuario, verifique su información.');
@@ -80,7 +79,6 @@ export class LoginComponent implements OnInit {
       },
       err => {
         console.log(err);
-        localStorage.setItem('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFyY2ExMEBnbWFpbC5jb20iLCJwcml2aWxlZ2VzIjpbeyJpZCI6MSwiY3JlYXRlZEF0IjoiMjAyMS0wOC0yMVQxNToxMzoxMS4wMDBaIiwidXBkYXRlZEF0IjoiMjAyMS0wOC0yMVQxNToxMzoxMS4wMDBaIiwiZGVsZXRlZCI6ZmFsc2UsIm5hbWUiOiJDbGllbnRlIGZpbmFsIiwiZGVzY3JpcHRpb24iOiJVc3VhcmlvIGZpbmFsIHF1ZSBoYXLDoSB1c28gZGVsIGFwbGljYXRpdm8ifV0sImlhdCI6MTYyOTU2Mzg0MywiZXhwIjoxNjI5NjA3MDQzfQ.LvGmNF1uPMcPTN8uwpi9OFNPtFMc0ac3ygDtr1a0DqY')
         if(err.status === 400) {
           this.mensajeError('Credenciales Incorrectas', 'Por favor verifique sus credenciales');
         } else {
@@ -92,8 +90,8 @@ export class LoginComponent implements OnInit {
 
   getDecodedAccessToken(token: string): any {
     try{
-      console.log(jwt_decode(token));
-        return jwt_decode(token);
+        const data:any = jwt_decode(token);
+        return data.privileges[0].id;
     }
     catch(Error){
         return null;
