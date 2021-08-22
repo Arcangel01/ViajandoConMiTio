@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { SolicitudVehiculoService } from '../../api/cliente/solicitud-vehiculo.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar-cliente',
@@ -17,7 +18,7 @@ export class NavbarClienteComponent implements OnInit {
     comment: ''
   };
 
-  constructor(private solicitudService: SolicitudVehiculoService) { }
+  constructor(private solicitudService: SolicitudVehiculoService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -42,6 +43,18 @@ export class NavbarClienteComponent implements OnInit {
         console.log('ERROR');
       });
     }
+  }
+
+  onLogout() {
+    Swal.fire({
+      title: 'Cerrar sesión',
+      text: 'Esta seguro de cerrar la sesión?',
+      icon: 'warning',
+      confirmButtonColor: 'red',
+    }).then(x => {
+      localStorage.removeItem('token');
+      this.router.navigate(['/']);
+    });
   }
 
 }

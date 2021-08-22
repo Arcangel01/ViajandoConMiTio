@@ -6,6 +6,7 @@ import { RegistroChoferComponent } from './components/registro-chofer/registro-c
 import { RegistroClienteComponent } from './components/registro-cliente/registro-cliente.component';
 import { HomeComponent } from './pages/home/home.component';
 import { HomeClienteComponent } from './pages/cliente-final/home-cliente/home-cliente.component';
+import { HomeChoferComponent } from './pages/chofer/home-chofer/home-chofer.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,10 @@ const routes: Routes = [
   {
     path: 'homeCliente',
     component: HomeClienteComponent
+  },
+  {
+    path: 'homeChofer',
+    component: HomeChoferComponent
   },
   {
     path: '',

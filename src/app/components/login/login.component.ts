@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/api/login.service';
 import Swal from 'sweetalert2';
+import jwt_decode from 'jwt-decode';
 
 @Component({
   selector: 'app-login',
@@ -63,6 +64,7 @@ export class LoginComponent implements OnInit {
       .subscribe((data: any) => {
         console.log(data);
         if (data.token) {
+          this.getDecodedAccessToken(data.token);
           localStorage.setItem('token', data.token);
           Swal.fire({
             title: 'Inicio de sesión correctamente',
@@ -78,6 +80,7 @@ export class LoginComponent implements OnInit {
       },
       err => {
         console.log(err);
+        localStorage.setItem('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFyY2ExMEBnbWFpbC5jb20iLCJwcml2aWxlZ2VzIjpbeyJpZCI6MSwiY3JlYXRlZEF0IjoiMjAyMS0wOC0yMVQxNToxMzoxMS4wMDBaIiwidXBkYXRlZEF0IjoiMjAyMS0wOC0yMVQxNToxMzoxMS4wMDBaIiwiZGVsZXRlZCI6ZmFsc2UsIm5hbWUiOiJDbGllbnRlIGZpbmFsIiwiZGVzY3JpcHRpb24iOiJVc3VhcmlvIGZpbmFsIHF1ZSBoYXLDoSB1c28gZGVsIGFwbGljYXRpdm8ifV0sImlhdCI6MTYyOTU2Mzg0MywiZXhwIjoxNjI5NjA3MDQzfQ.LvGmNF1uPMcPTN8uwpi9OFNPtFMc0ac3ygDtr1a0DqY')
         if(err.status === 400) {
           this.mensajeError('Credenciales Incorrectas', 'Por favor verifique sus credenciales');
         } else {
@@ -87,12 +90,25 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  getDecodedAccessToken(token: string): any {
+    try{
+      console.log(jwt_decode(token));
+        return jwt_decode(token);
+    }
+    catch(Error){
+        return null;
+    }
+  }
+
   // Redireccionar
   dirigir(rol: number) {
     if (localStorage.getItem('token') != null) {
       switch (rol) {
         case 1:
           this.route.navigateByUrl('/homeCliente');
+          break;
+        case 2:
+          this.route.navigateByUrl('/homeChofer');
           break;
       
         default:

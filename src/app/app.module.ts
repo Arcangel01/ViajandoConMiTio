@@ -14,6 +14,8 @@ import { RegistroChoferComponent } from './components/registro-chofer/registro-c
 import { RegistroAlquiladorComponent } from './components/registro-alquilador/registro-alquilador.component';
 import { HomeClienteComponent } from './pages/cliente-final/home-cliente/home-cliente.component';
 import { NavbarClienteComponent } from './components/navbar-cliente/navbar-cliente.component';
+import { HomeChoferComponent } from './pages/chofer/home-chofer/home-chofer.component';
+import { NavbarChoferComponent } from './components/navbar-chofer/navbar-chofer.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { NavbarClienteComponent } from './components/navbar-cliente/navbar-clien
     RegistroChoferComponent,
     RegistroAlquiladorComponent,
     HomeClienteComponent,
-    NavbarClienteComponent
+    NavbarClienteComponent,
+    HomeChoferComponent,
+    NavbarChoferComponent
   ],
   imports: [
     BrowserModule,
