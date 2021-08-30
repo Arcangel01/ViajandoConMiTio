@@ -16,6 +16,9 @@ import { HomeClienteComponent } from './pages/cliente-final/home-cliente/home-cl
 import { NavbarClienteComponent } from './components/navbar-cliente/navbar-cliente.component';
 import { HomeChoferComponent } from './pages/chofer/home-chofer/home-chofer.component';
 import { NavbarChoferComponent } from './components/navbar-chofer/navbar-chofer.component';
+import { HomeAlquiladorComponent } from './pages/alquilador/home-alquilador/home-alquilador.component';
+import { NavbarAlquiladorComponent } from './components/navbar-alquilador/navbar-alquilador.component';
+import { AlquilarAutoComponent } from './pages/chofer/alquilar-auto/alquilar-auto.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,10 @@ import { NavbarChoferComponent } from './components/navbar-chofer/navbar-chofer.
     HomeClienteComponent,
     NavbarClienteComponent,
     HomeChoferComponent,
-    NavbarChoferComponent
+    NavbarChoferComponent,
+    HomeAlquiladorComponent,
+    NavbarAlquiladorComponent,
+    AlquilarAutoComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,64 @@
+<nav>
+    <div class="logo">
+        <a href="#"><em>ViajandoConMiTío</em>.com</a>
+    </div>
+    <div class="link">
+        <a class="nav-link active" aria-current="page" type="button">Inicio</a>
+        <a class="nav-link" type="button" data-bs-toggle="modal" href="#exampleModalToggle">Publicar Vehiculo</a>
+        <a class="nav-link" type="button" (click)="onLogout()"><img src="../../../assets/img/usuario.png" width="38px"></a>
+    </div>
+</nav>
+
+<div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalToggleLabel">Publicar vehiculo</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form class="row g-3" #form="ngForm" (submit)="publicarVehiculo(form)">
+                <div class="col-md-6">
+                  <label class="form-label">Marca</label>
+                  <input type="text" class="form-control" placeholder="Ejemplo: Mazda"
+                  #brand ="ngModel" name="brand" [(ngModel)]="vehiculo.brand" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Color</label>
+                  <input type="text" class="form-control" placeholder="Ejemplo: Negro"
+                  #color ="ngModel" name="color" [(ngModel)]="vehiculo.color" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Placa</label>
+                  <input type="text" class="form-control" placeholder="Ejemplo: C310SI02" 
+                  #license_plate ="ngModel" name="license_plate" [(ngModel)]="vehiculo.license_plate" required>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Asientos</label>
+                    <input type="number" class="form-control"
+                    #seat ="ngModel" name="seat" [(ngModel)]="vehiculo.seat" required>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Imagen del carro</label>
+                    <div class="image-upload">
+                        <label for="file-input">
+                            <img [src]="image" > 
+                        </label>
+                        <input type="file" id="file-input" accept="image/*" (change)="cargarImagen($event)" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div id="preview">
+                        <label for="file-input">
+                            <img [src]="img" > 
+                        </label>
+                    </div>
+                </div>
+                <div class="col-12">
+                  <button class="btn btn-success" type="submit" [disabled]="form.invalid">Publicar</button>
+                </div>
+              </form>
+        </div>
+      </div>
+    </div>
+  </div>

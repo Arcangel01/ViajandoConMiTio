@@ -26,4 +26,12 @@ export class NavbarChoferComponent implements OnInit {
     });
   }
 
+  publicVehiculo() {
+    this.router.navigateByUrl('alquilarAuto');
+  }
+
+  inicio() {
+    this.router.navigateByUrl('homeChofer');
+  }
+
 }
