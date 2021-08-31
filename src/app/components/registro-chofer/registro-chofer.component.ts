@@ -145,4 +145,8 @@ export class RegistroChoferComponent implements OnInit {
     }
   }
 
+  irLogin() {
+    this.route.navigateByUrl('login');
+  }
+
 }

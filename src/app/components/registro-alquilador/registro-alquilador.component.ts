@@ -144,4 +144,8 @@ export class RegistroAlquiladorComponent implements OnInit {
     }
   }
 
+  irLogin() {
+    this.route.navigateByUrl('login');
+  }
+
 }
