@@ -11,6 +11,6 @@ export class RegistroServiceService {
   constructor(private http: HttpClient) { }
 
   registrarUsuario(body: any):Observable<any> {
-    return this.http.post(environment.path + 'auth/signup', body);
+    return this.http.post('http://34.67.163.83:8000/api/v1/' + 'auth/signup', body);
   }
 }

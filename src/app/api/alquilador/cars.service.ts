@@ -13,12 +13,12 @@ export class CarsService {
 
   // Registrar vehiculo
   registerCars(cars: any) {
-    return this.http.post(environment.path + 'car', cars, {headers : this.tokenHeader});
+    return this.http.post('http://34.67.163.83:8000/api/v1/' + 'car', cars, {headers : this.tokenHeader});
   }
 
   // Ver vehiculos
   verVehiculos() {
-    return this.http.get(environment.path + 'car', {headers : this.tokenHeader});
+    return this.http.get('http://34.67.163.83:8000/api/v1/' + 'car', {headers : this.tokenHeader});
   }
 
 }

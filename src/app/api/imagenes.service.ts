@@ -13,6 +13,6 @@ export class ImagenesService {
   saveImage(file: File) {
     const fd= new FormData;
     fd.append('file',file,file.name);
-    return this.http.post(environment.path + 'upload/one', fd);
+    return this.http.post('http://34.67.163.83:8000/api/v1/' + 'upload/one', fd);
   }
 }

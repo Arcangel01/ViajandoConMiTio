@@ -11,6 +11,6 @@ export class LoginService {
 
     // Iniciar Sesion
     logueo(userCredentials: any) {
-      return this.http.post(environment.path + 'auth/login', userCredentials);
+      return this.http.post('http://34.67.163.83:8000/api/v1/' + 'auth/login', userCredentials);
     }
 }
