@@ -108,7 +108,7 @@ export class LoginComponent implements OnInit {
         case 2:
           this.route.navigateByUrl('/homeChofer');
           break;
-        case 2:
+        case 3:
            this.route.navigateByUrl('/homeAlquilador');
           break;
       
