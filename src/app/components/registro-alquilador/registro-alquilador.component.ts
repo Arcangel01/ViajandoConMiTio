@@ -131,7 +131,7 @@ export class RegistroAlquiladorComponent implements OnInit {
             icon: 'success',
             confirmButtonColor: 'green',
           }).then(x => {
-            this.route.navigateByUrl('');
+            this.route.navigateByUrl('homeAlquilador');
           });
         } else {
           this.mensajeError('Se produjo un error', 'Se ha producido un error y no se pudo registrar al usuario, verifique su información.');
