@@ -95,8 +95,21 @@
   </div>
 
   <hr>
-  
-</div>
+    <h5>Mis publicaciones</h5>
+    <div class="d-flex flex-wrap">
+        <ng-container *ngFor="let item of vehiculos">
+            <div class="card card-request d-flex flex-column justify-content-between ml-2">
+                <div class="card-body">
+                    <img class="card-img-top" [src]="item.photos[0].url"  height="180px" />
+                    <h5 class="card-title p-1"> Marca - {{item.brand}}</h5>
+                    <h5 class="card-title p-1"> Color - {{item.color}} </h5>
+                    <h6 class="card-subtitle p-1"> Placa - {{item.license_plate}} </h6>
+                    <p class="card-text p-1"> Asientos - {{item.seat}} </p>
+                  </div>
+            </div>
+        </ng-container>
+    </div>
+  </div>
 
 <div class="footer">
   <app-footer></app-footer>

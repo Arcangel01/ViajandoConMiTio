@@ -20,4 +20,10 @@ export class SolicitudesService {
     verDetalleCliente() {
       return this.http.get('http://34.67.163.83:8000/api/v1/' + 'user/me', {headers : this.tokenHeader});
     }
+
+  // Desactivar solicitud
+  disable(id: number) {
+    const tokenHeader = new HttpHeaders({'Authorization': 'Bearer ' + localStorage.getItem('token')});
+    return this.http.patch('http://34.67.163.83:8000/api/v1/' + 'request/disable/' + id, {headers : tokenHeader});
+  }
 }

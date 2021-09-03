@@ -40,7 +40,16 @@ export class HomeChoferComponent implements OnInit {
       icon: 'warning',
       confirmButtonColor: 'red',
     }).then(x => {
-      item.active = false;
+      if (x.isConfirmed) {
+        // this.solicitudesService.disable(item.id)
+        // .subscribe(x => {
+        //   console.log(x);
+        // }, 
+        // err => {
+        //   console.log(err);
+        // });
+        item.active = false;
+      }
     });
   }
 
@@ -50,15 +59,8 @@ export class HomeChoferComponent implements OnInit {
     this.index = i;
   }
 
-  confirmar() {
-    Swal.fire({
-      title: 'Solicitud confirmada',
-      text: 'Solicitud aceptada correctamente',
-      icon: 'success',
-      confirmButtonColor: 'green',
-    }).then(x => {
-      
-    });
+  confirmar(item:any) {
+    item.active = false;
   }
 
 }

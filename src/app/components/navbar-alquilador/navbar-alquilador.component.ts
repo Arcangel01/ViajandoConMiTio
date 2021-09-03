@@ -37,8 +37,10 @@ export class NavbarAlquiladorComponent implements OnInit {
       icon: 'warning',
       confirmButtonColor: 'red',
     }).then(x => {
-      localStorage.removeItem('token');
-      this.router.navigate(['/']);
+      if (x.isConfirmed) {
+        localStorage.removeItem('token');
+        this.router.navigate(['/']);
+      }
     });
   }
 
